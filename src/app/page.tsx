@@ -3,6 +3,8 @@ import Bio from "@/components/Bio";
 import Showcase from "@/components/Showcase";
 import Specials from "@/components/Specials";
 import Tours from "@/components/Tours";
+import PPV from "@/components/PPV";
+import Merch from "@/components/Merch";
 
 export default function Home() {
   return (
@@ -11,7 +13,9 @@ export default function Home() {
       <Bio />
       <Specials />
       <Tours />
+      <PPV />
       <Showcase />
+      <Merch />
     </main>
   );
 }

@@ -78,3 +78,33 @@ export const upcomingShows = [
     status: "Sold Out"
   }
 ];
+
+export const merchItems = [
+  {
+    id: 1,
+    name: "The 'Aloof' Graphic Tee",
+    price: "Rs. 1,500",
+    link: "#",
+  },
+  {
+    id: 2,
+    name: "Mujibaad Tour Hoodie",
+    price: "Rs. 3,500",
+    link: "#",
+  },
+  {
+    id: 3,
+    name: "AAYUSHWHO Signature Cap",
+    price: "Rs. 900",
+    link: "#",
+  }
+];
+
+export const ppvSpecials = [
+  {
+    title: "Mujibaad (Extended Uncut)",
+    description: "The full, uncensored 90-minute socio-political hour. No holding back.",
+    price: "Rs. 500",
+    link: "#",
+  }
+];

@@ -20,6 +20,7 @@ export default function Navbar() {
           <Link href="#specials" className="hover:text-club-blue transition-colors">The Hour</Link>
           <Link href="#tours" className="hover:text-club-blue transition-colors">Tours</Link>
           <Link href="#showcase" className="hover:text-club-blue transition-colors">Stand-Up</Link>
+          <Link href="#merch" className="hover:text-club-blue transition-colors">Merch</Link>
         </div>
       </div>
     </motion.nav>
