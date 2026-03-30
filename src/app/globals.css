@@ -9,7 +9,7 @@
   --color-club-red: #8a0303;
   --color-club-red-dark: #4a0101;
 
-  --font-sans: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-anton), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-merriweather), ui-serif, Georgia, serif;
 }
 
@@ -22,7 +22,7 @@ body {
 .font-heading {
   font-family: var(--font-sans);
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 /* Gritty High-ISO Noise Overlay */

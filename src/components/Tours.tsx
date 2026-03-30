@@ -40,28 +40,33 @@ export default function Tours() {
                 </div>
                 {/* Location */}
                 <div className="flex flex-col">
-                  <span className="text-xl md:text-2xl font-serif text-club-gray-light font-bold">
+                  {show.showName && (
+                    <span className="text-2xl md:text-3xl text-club-red font-heading tracking-widest uppercase mb-1">
+                      {show.showName}
+                    </span>
+                  )}
+                  <span className="text-lg md:text-xl font-serif text-club-gray-light font-bold">
                     {show.city}
                   </span>
-                  <span className="text-club-gray-light/50 font-light">
+                  <span className="text-club-gray-light/50 font-light mt-1">
                     {show.venue}
                   </span>
                 </div>
               </div>
 
               {/* Action Button */}
-              <div className="flex items-center gap-6 mt-2 md:mt-0">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mt-6 md:mt-0 w-full md:w-auto">
                 {show.status === "Selling Fast" && (
                   <span className="text-club-blue uppercase tracking-widest text-xs font-bold animate-pulse">
                     Selling Fast
                   </span>
                 )}
                 {show.status === "Sold Out" ? (
-                  <button disabled className="px-8 py-3 border border-club-gray-light/20 text-club-gray-light/40 font-heading uppercase tracking-widest cursor-not-allowed">
+                  <button disabled className="w-full md:w-auto px-8 py-4 md:py-3 border border-club-gray-light/20 text-club-gray-light/40 font-heading uppercase tracking-widest cursor-not-allowed">
                     Sold Out
                   </button>
                 ) : (
-                  <a href={show.ticketLink} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-club-red hover:bg-club-red-dark text-white font-heading uppercase tracking-widest transition-colors shadow-lg shadow-club-black">
+                  <a href={show.ticketLink} target="_blank" rel="noopener noreferrer" className="w-full md:w-auto text-center px-8 py-4 md:py-3 bg-club-red hover:bg-club-red-dark text-white font-heading uppercase tracking-widest transition-colors shadow-lg shadow-club-black">
                     Tickets
                   </a>
                 )}

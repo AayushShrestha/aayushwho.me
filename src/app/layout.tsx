@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Oswald, Merriweather } from "next/font/google";
+import { Anton, Merriweather } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
-const oswald = Oswald({
-  variable: "--font-oswald",
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -27,9 +28,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${oswald.variable} ${merriweather.variable} h-full antialiased scroll-smooth`}
+      className={`${anton.variable} ${merriweather.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-serif bg-club-black text-club-gray-light bg-noise pt-20">
+      <body className="min-h-full flex flex-col font-serif bg-club-black text-club-gray-light bg-noise">
         <Navbar />
         {children}
       </body>

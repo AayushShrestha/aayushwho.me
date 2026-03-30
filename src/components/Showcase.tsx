@@ -1,12 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { standUpVideos, podcasts } from "@/data/content";
+import Image from "next/image";
 
 export default function Showcase() {
+  const [activeVideo, setActiveVideo] = useState(standUpVideos[0]);
+
   return (
     <section id="showcase" className="relative w-full py-24 px-6 md:px-16 bg-club-black overflow-hidden border-t border-club-blue/20">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -14,80 +18,120 @@ export default function Showcase() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="font-heading text-4xl md:text-6xl text-club-gray-light mb-4 text-center md:text-left">
+          <h2 className="font-heading text-4xl md:text-6xl text-club-gray-light mb-4 text-center md:text-left tracking-wide">
             STAND-UP <span className="text-club-blue">COMEDY</span>
           </h2>
           <p className="text-xl font-light text-club-gray-light/60 text-center md:text-left">
-            The raw, unfiltered routines. Ordered by views.
+            The raw, unfiltered routines. Click a thumbnail to play.
           </p>
         </motion.div>
 
-        {/* Videos Grid - Increased size */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Big Player */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="w-full aspect-video bg-club-gray mb-6 border-4 border-club-gray-light/5 shadow-2xl relative group"
+        >
+            <iframe
+              key={activeVideo.id} // Forces re-render on change
+              src={`https://www.youtube.com/embed/${activeVideo.id}?autoplay=0&controls=1&modestbranding=1`}
+              title={activeVideo.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+        </motion.div>
+
+        <div className="mb-8">
+           <h3 className="font-heading text-3xl text-club-gray-light uppercase tracking-wide">
+             {activeVideo.title}
+           </h3>
+           <p className="text-club-red font-serif tracking-widest uppercase text-sm">{activeVideo.views} Views</p>
+        </div>
+
+        {/* Thumbnails Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {standUpVideos.map((video, idx) => (
-            <motion.div
+            <motion.button
               key={video.id}
-              initial={{ opacity: 0, y: 30 }}
+              onClick={() => {
+                setActiveVideo(video);
+                document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group flex flex-col"
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              className={`relative aspect-video overflow-hidden border-2 transition-all focus:outline-none ${activeVideo.id === video.id ? 'border-club-red scale-[1.02] shadow-xl shadow-club-red/20 opacity-100' : 'border-club-blue/10 hover:border-club-blue/50 opacity-50 hover:opacity-100 grayscale hover:grayscale-0'}`}
             >
-              <div className="aspect-video w-full bg-club-gray relative overflow-hidden mb-4 border-2 border-club-blue/10 group-hover:border-club-blue/50 transition-colors shadow-lg">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}?controls=1&modestbranding=1`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500"
-                ></iframe>
-              </div>
-              <h3 className="font-heading text-2xl text-club-gray-light group-hover:text-club-blue transition-colors mb-1">
-                {video.title}
-              </h3>
-              <p className="font-serif text-sm text-club-gray-light/50 italic tracking-widest uppercase">
-                {video.views} Views
-              </p>
-            </motion.div>
+              <Image 
+                 src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} 
+                 alt={video.title} 
+                 fill 
+                 className="object-cover"
+                 sizes="(max-width: 768px) 50vw, 25vw" 
+              />
+              <div className="absolute inset-0 bg-club-black/20 hover:bg-transparent transition-colors"></div>
+              
+              {/* Overlay Play Icon */}
+              {activeVideo.id !== video.id && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-10 h-10 bg-club-black/80 rounded-full flex items-center justify-center border border-white/20">
+                    <svg className="w-4 h-4 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              )}
+            </motion.button>
           ))}
         </div>
 
-        {/* Podcasts Grid */}
+        {/* PODCAST APPEARANCES */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-24 mb-10"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.6 }}
+           className="mt-32 mb-12"
         >
-          <h2 className="font-heading text-3xl md:text-4xl text-club-gray-light/80 mb-2">
-            GUEST <span className="text-club-red/80">APPEARANCES</span>
+          <h2 className="font-heading text-4xl md:text-5xl text-club-gray-light mb-4 text-center md:text-left tracking-wide">
+            PODCAST <span className="text-club-red">APPEARANCES</span>
           </h2>
+          <p className="text-xl font-light text-club-gray-light/60 text-center md:text-left">
+            Raw conversations and guest spots.
+          </p>
         </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {podcasts.map((podcast, idx) => (
-            <motion.div
-              key={podcast.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex gap-4 items-center bg-club-gray/30 p-4 border border-club-gray-light/5 hover:border-club-red/50 transition-colors"
-            >
-              <div className="w-32 aspect-video bg-club-gray shrink-0 relative overflow-hidden">
-                <iframe
-                  src={`https://www.youtube.com/embed/${podcast.id}?controls=1&modestbranding=1`}
-                  title={podcast.title}
-                  allowFullScreen
-                  className="w-full h-full grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                ></iframe>
-              </div>
-              <div>
-                <h3 className="font-heading text-lg text-club-gray-light">{podcast.title}</h3>
-                <p className="font-serif text-sm text-club-gray-light/50 italic">via {podcast.host}</p>
-              </div>
-            </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {podcasts.map((pod, idx) => (
+             <motion.a
+               key={pod.id}
+               href={`https://youtube.com/watch?v=${pod.id}`}
+               target="_blank"
+               rel="noopener noreferrer"
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.5, delay: idx * 0.1 }}
+               className="group flex flex-col focus:outline-none"
+             >
+                <div className="w-full aspect-video bg-club-gray relative overflow-hidden mb-4 border-2 border-club-blue/10 group-hover:border-club-red transition-all shadow-lg">
+                   <Image src={`https://img.youtube.com/vi/${pod.id}/hqdefault.jpg`} alt={pod.title} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                   <div className="absolute inset-0 bg-club-black/40 group-hover:bg-transparent transition-colors"></div>
+                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                     <div className="w-14 h-14 bg-club-red text-white flex items-center justify-center rounded-full shadow-lg shadow-club-black">
+                       <svg className="w-6 h-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                     </div>
+                   </div>
+                </div>
+                <h3 className="font-heading text-2xl text-club-gray-light group-hover:text-club-red transition-colors leading-tight mb-2">
+                  {pod.title}
+                </h3>
+                <p className="font-serif text-sm text-club-gray-light/60 italic uppercase tracking-widest">
+                  Hosted by {pod.host}
+                </p>
+             </motion.a>
           ))}
         </div>
 

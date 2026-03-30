@@ -56,6 +56,7 @@ export const upcomingShows = [
   {
     id: 1,
     date: "May 15, 2026",
+    showName: "Mujibaad",
     venue: "Kathmandu Comedy Club",
     city: "Kathmandu",
     ticketLink: "https://khalti.com", // Example link
@@ -64,6 +65,7 @@ export const upcomingShows = [
   {
     id: 2,
     date: "May 22, 2026",
+    showName: "Dark, Dirty, and Dangerous",
     venue: "Pokhara City Hall",
     city: "Pokhara",
     ticketLink: "https://ticketsanjal.com",
@@ -72,6 +74,7 @@ export const upcomingShows = [
   {
     id: 3,
     date: "Jun 05, 2026",
+    showName: "Gender In.Equality",
     venue: "Brisbane Comedy Festival",
     city: "Brisbane",
     ticketLink: "https://kgarira.com",

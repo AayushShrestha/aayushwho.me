@@ -5,23 +5,20 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[100dvh] flex flex-col justify-center overflow-hidden">
-      {/* Background Image with Gritty Filter */}
+    <section className="relative w-full h-[100dvh] flex flex-col justify-end pb-32 md:pb-0 md:justify-center overflow-hidden">
+      {/* Background Image without overlays */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-image.png"
           alt="Aayush Shrestha Stand Up Comedy"
           fill
-          className="object-cover object-top opacity-60 contrast-125"
+          className="object-cover object-top"
           priority
         />
-        {/* Soft edge gradients so it blends with the dark background */}
-        <div className="absolute inset-0 bg-gradient-to-t from-club-black via-club-black/50 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-club-black/80 to-transparent"></div>
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full pt-16">
+      <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
