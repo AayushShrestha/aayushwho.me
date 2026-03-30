@@ -18,8 +18,8 @@ export default function Navbar() {
         <div className="hidden md:flex gap-8 font-heading text-sm uppercase tracking-widest text-club-gray-light">
           <Link href="#bio" className="hover:text-club-blue transition-colors">The Comedian</Link>
           <Link href="#specials" className="hover:text-club-blue transition-colors">The Hour</Link>
+          <Link href="#tours" className="hover:text-club-blue transition-colors">Tours</Link>
           <Link href="#showcase" className="hover:text-club-blue transition-colors">Stand-Up</Link>
-          <Link href="#tours" className="hover:text-club-blue transition-colors opacity-50 cursor-not-allowed">Tours</Link>
         </div>
       </div>
     </motion.nav>

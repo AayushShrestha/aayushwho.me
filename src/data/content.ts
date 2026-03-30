@@ -51,3 +51,30 @@ export const specialsList = [
     imagePath: "/images/mujibaad.png",
   }
 ];
+
+export const upcomingShows = [
+  {
+    id: 1,
+    date: "May 15, 2026",
+    venue: "Kathmandu Comedy Club",
+    city: "Kathmandu",
+    ticketLink: "https://khalti.com", // Example link
+    status: "Available"
+  },
+  {
+    id: 2,
+    date: "May 22, 2026",
+    venue: "Pokhara City Hall",
+    city: "Pokhara",
+    ticketLink: "https://ticketsanjal.com",
+    status: "Selling Fast"
+  },
+  {
+    id: 3,
+    date: "Jun 05, 2026",
+    venue: "Brisbane Comedy Festival",
+    city: "Brisbane",
+    ticketLink: "https://kgarira.com",
+    status: "Sold Out"
+  }
+];
