@@ -20,6 +20,9 @@
 # production
 /build
 
+# subscriber data (collected locally — do not commit)
+/data/
+
 # misc
 .DS_Store
 *.pem
