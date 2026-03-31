@@ -1,3 +1,97 @@
+export const heroContent = {
+  tagline: "Honest stand-up comedy from Kathmandu.",
+  taglineAccent: "Three live shows. One seat with your name on it.",
+  primaryCTA: {
+    label: "Explore Next Shows",
+    href: "#tours",
+  },
+  secondaryCTA: {
+    label: "Watch My Work",
+    href: "#showcase",
+  },
+};
+
+export const socialLinks = [
+  { platform: "Instagram", href: "https://www.instagram.com/aayush_who/", icon: "instagram" },
+  { platform: "YouTube",   href: "https://www.youtube.com/@AayushWho",    icon: "youtube" },
+  { platform: "TikTok",    href: "https://www.tiktok.com/@aayush_who",    icon: "tiktok" },
+  { platform: "X",         href: "https://x.com/aayush_who",              icon: "x" },
+  { platform: "Facebook",  href: "https://www.facebook.com/AayushWho/",   icon: "facebook" },
+];
+
+export const communityContent = {
+  discord: {
+    inviteUrl: "https://discord.gg/PLACEHOLDER", // owner to fill in
+  },
+  whatsapp: {
+    inviteUrl: "https://wa.me/PLACEHOLDER", // owner to fill in
+  },
+};
+
+export const sectionCopy = {
+  specials: {
+    heading: "CURRENTLY",
+    headingAccent: "PERFORMING",
+    subheading: "Three shows. Three different rooms. Pick the one that suits how much honesty you can handle.",
+  },
+  tours: {
+    heading: "CATCH IT",
+    headingAccent: "LIVE",
+    subheading: "Dates and venues. Seats go fast — especially the good ones.",
+    youtubeNudge: "Can't make it in person? Watch the specials on YouTube.",
+  },
+  ppv: {
+    badge: "Uncut. Unfiltered. Yours.",
+    description: "The full ninety minutes — everything that didn't make it to the free version. No softening, no edits.",
+    cta: "Watch Now",
+  },
+  showcase: {
+    standUpHeading: "THE BITS THAT",
+    standUpHeadingAccent: "GOT LOUD",
+    standUpSubheading: "Start here. Pick a clip. See which one you send to a friend.",
+    podcastHeading: "HEARD ON",
+    podcastHeadingAccent: "OTHER MICS",
+    podcastSubheading: "Turns out people find it worth recording when I talk.",
+    youtubeNudge: "More on YouTube. New stuff goes up regularly.",
+  },
+  merch: {
+    heading: "WEAR",
+    headingAccent: "THE BIT",
+    subheading: "Official gear. Actual quality. Wearable proof that you were here.",
+  },
+  connectivity: {
+    heckleHeading: "THE HECKLE BOX",
+    heckleSubheading: "Leave a joke, a burn, or a genuine question. Might use it on stage. Might not. Fifty-fifty.",
+    heckleSubmit: "Drop the Mic",
+    connectHeading: "CONNECT",
+    bookingHeading: "For Bookings",
+    bookingSubheading: "Stand-up gigs, writing rooms, corporate events. Reach out directly.",
+  },
+  community: {
+    heading: "THE INNER",
+    headingAccent: "CIRCLE",
+    subheading: "The closer you get, the better it gets. Pick your level of involvement.",
+    discord: {
+      title: "The Discord",
+      description: "Where the actual conversations happen. Bits, politics, very bad takes. You'll fit right in.",
+      cta: "Join the Server",
+    },
+    whatsapp: {
+      title: "Broadcast List",
+      description: "Show dates before the general public sees them. Nothing else. No spam.",
+      cta: "Get on the List",
+    },
+    newsletter: {
+      title: "The Newsletter",
+      description: "One email when there's something worth saying. Not a weekly digest of filler.",
+      cta: "Subscribe",
+      placeholder: "your@email.com",
+      successMessage: "You're in.",
+      errorMessage: "Something broke. Try again.",
+    },
+  },
+};
+
 export const standUpVideos = [
   {
     id: "sR1lFN8sDu4",
