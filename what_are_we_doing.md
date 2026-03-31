@@ -39,5 +39,37 @@ Instagram: https://www.instagram.com/aayush_who/
 TikTok: https://www.tiktok.com/@aayush_who
 LinkedIn: https://www.linkedin.com/in/aayush-who/
 
+---
 
+## Phase 2 Updates
 
+### Section Order (AIDA Funnel)
+The page sections are ordered to match an awareness → action → retention funnel:
+1. Hero (hook + CTAs + social icons)
+2. Tours (immediate action for primed visitors)
+3. Specials (build desire for the work)
+4. Showcase (prove the work with video)
+5. PPV (upsell the uncut version)
+6. Community (retain and deepen the relationship)
+7. Merch (secondary revenue)
+8. Connectivity / Heckle Box (long tail)
+
+### Hero CTA Configuration
+The hero CTAs are configurable via `heroContent` in `src/data/content.ts`.
+Change `primaryCTA.href` and `primaryCTA.label` to shift what action you want visitors to take without touching the component.
+
+### Community Platforms
+Both Discord and WhatsApp Broadcast Channel exist. Links are stored as placeholders in `communityContent` in `src/data/content.ts` — update them there when ready.
+- Discord: `communityContent.discord.inviteUrl`
+- WhatsApp: `communityContent.whatsapp.inviteUrl`
+
+### Email Collection
+Emails are collected via a form in the Community section. They POST to `/api/subscribe` and are stored at `/data/subscribers.json` (local filesystem, excluded from git).
+**Note:** This approach works in development and self-hosted production. Migrate to a database or KV store before deploying to Vercel.
+
+### Copy Direction
+All section headings and subheadings live in `sectionCopy` in `src/data/content.ts`.
+Tone: second-person, inviting and confident, comedian's voice. Reads like Aayush is talking to the visitor, not describing himself in a press kit.
+
+### Inline Connectivity Nudges
+Small YouTube follow nudges are placed at the bottom of the Tours and Showcase sections, pointing visitors to the YouTube channel after they've engaged with that content.
