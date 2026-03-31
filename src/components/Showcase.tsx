@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { standUpVideos, podcasts } from "@/data/content";
+import { standUpVideos, podcasts, sectionCopy } from "@/data/content";
 import Image from "next/image";
 
 export default function Showcase() {
@@ -19,10 +19,10 @@ export default function Showcase() {
           className="mb-12"
         >
           <h2 className="font-heading text-4xl md:text-6xl text-club-gray-light mb-4 text-center md:text-left tracking-wide">
-            STAND-UP <span className="text-club-blue">COMEDY</span>
+            {sectionCopy.showcase.standUpHeading} <span className="text-club-blue">{sectionCopy.showcase.standUpHeadingAccent}</span>
           </h2>
           <p className="text-xl font-light text-club-gray-light/60 text-center md:text-left">
-            The raw, unfiltered routines. Click a thumbnail to play.
+            {sectionCopy.showcase.standUpSubheading}
           </p>
         </motion.div>
 
@@ -96,10 +96,10 @@ export default function Showcase() {
            className="mt-32 mb-12"
         >
           <h2 className="font-heading text-4xl md:text-5xl text-club-gray-light mb-4 text-center md:text-left tracking-wide">
-            PODCAST <span className="text-club-red">APPEARANCES</span>
+            {sectionCopy.showcase.podcastHeading} <span className="text-club-red">{sectionCopy.showcase.podcastHeadingAccent}</span>
           </h2>
           <p className="text-xl font-light text-club-gray-light/60 text-center md:text-left">
-            Raw conversations and guest spots.
+            {sectionCopy.showcase.podcastSubheading}
           </p>
         </motion.div>
 
@@ -133,6 +133,22 @@ export default function Showcase() {
                 </p>
              </motion.a>
           ))}
+        </div>
+
+        {/* YouTube nudge */}
+        <div className="mt-16 pt-6 border-t border-club-blue/10 flex flex-wrap items-center gap-3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-club-red shrink-0">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span className="text-sm text-club-gray-light/50">{sectionCopy.showcase.youtubeNudge}</span>
+          <a
+            href="https://www.youtube.com/@AayushWho"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-club-blue hover:text-club-red transition-colors"
+          >
+            Subscribe on YouTube →
+          </a>
         </div>
 
       </div>

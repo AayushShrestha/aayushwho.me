@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ppvSpecials } from "@/data/content";
+import { ppvSpecials, sectionCopy } from "@/data/content";
 import Image from "next/image";
 
 export default function PPV() {
@@ -33,20 +33,20 @@ export default function PPV() {
           {/* Content Side */}
           <div className="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center relative z-20 space-y-6 bg-club-black">
             <div className="inline-block bg-[#8a0303] text-white px-3 py-1 font-heading uppercase text-xs tracking-widest w-max self-start mb-2">
-              Exclusive Access
+              {sectionCopy.ppv.badge}
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-7xl text-white drop-shadow-md leading-none">
               {ppv.title}
             </h2>
             <div className="w-20 h-1 bg-[#8a0303]"></div>
             <p className="text-lg md:text-xl font-light text-club-gray-light/80 italic">
-              {ppv.description}
+              {sectionCopy.ppv.description}
             </p>
             
             <div className="pt-8 flex flex-col sm:flex-row items-center gap-6">
               <span className="text-4xl font-serif text-white font-bold tracking-tight">{ppv.price}</span>
               <a href={ppv.link} className="px-10 py-5 bg-[#8a0303] hover:bg-club-blue text-white font-heading text-lg uppercase tracking-widest transition-colors w-full sm:w-auto text-center shadow-lg transform hover:scale-105">
-                Unlock Status
+                {sectionCopy.ppv.cta}
               </a>
             </div>
           </div>

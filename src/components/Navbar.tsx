@@ -18,9 +18,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "The Hour", href: "#specials" },
     { name: "Tours", href: "#tours" },
-    { name: "Stand-Up", href: "#showcase" },
+    { name: "The Hour", href: "#specials" },
+    { name: "Watch", href: "#showcase" },
+    { name: "Inner Circle", href: "#contact" },
     { name: "Merch", href: "#merch" },
   ];
 
@@ -37,8 +38,8 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-16 h-20 flex items-center justify-between">
-          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-heading text-2xl tracking-widest text-white hover:text-club-red transition-colors z-50 relative">
-            AAYUSH<span className="text-club-blue">WHO</span>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="font-heading text-xl tracking-widest text-white hover:text-club-red transition-colors z-50 relative">
+            AAYUSH <span className="text-club-blue">SHRESTHA</span>
           </Link>
 
           {/* Desktop Menu */}

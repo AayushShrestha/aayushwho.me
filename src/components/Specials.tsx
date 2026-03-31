@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { specialsList } from "@/data/content";
+import { specialsList, sectionCopy } from "@/data/content";
 import Image from "next/image";
 
 export default function Specials() {
@@ -16,10 +16,10 @@ export default function Specials() {
           className="mb-12 md:mb-16 text-center"
         >
           <h2 className="font-heading text-4xl md:text-6xl text-club-gray-light tracking-wide">
-            CURRENTLY PERFORMING <span className="text-club-red">SHOWS</span>
+            {sectionCopy.specials.heading} <span className="text-club-red">{sectionCopy.specials.headingAccent}</span>
           </h2>
           <p className="mt-4 text-lg font-light text-club-gray-light/60 max-w-2xl mx-auto">
-            My active stand-up comedy hours. Performing raw and unapologetic across the nation.
+            {sectionCopy.specials.subheading}
           </p>
         </motion.div>
 

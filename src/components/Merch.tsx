@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { merchItems } from "@/data/content";
+import { merchItems, sectionCopy } from "@/data/content";
 
 export default function Merch() {
   return (
@@ -15,10 +15,10 @@ export default function Merch() {
           className="mb-16 md:mb-24 text-center"
         >
           <h2 className="font-heading text-4xl md:text-6xl text-club-gray-light uppercase">
-            THE <span className="text-club-red">MERCH</span>
+            {sectionCopy.merch.heading} <span className="text-club-red">{sectionCopy.merch.headingAccent}</span>
           </h2>
           <p className="mt-4 text-xl font-light text-club-gray-light/60">
-            Official AAYUSHWHO apparel and artifacts. (Placeholders for now)
+            {sectionCopy.merch.subheading}
           </p>
         </motion.div>
 

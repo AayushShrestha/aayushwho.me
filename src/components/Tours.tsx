@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { upcomingShows } from "@/data/content";
+import { upcomingShows, sectionCopy } from "@/data/content";
 
 export default function Tours() {
   return (
@@ -15,10 +15,10 @@ export default function Tours() {
           className="mb-16 md:mb-20 text-center"
         >
           <h2 className="font-heading text-4xl md:text-6xl text-club-gray-light uppercase">
-            LIVE <span className="text-club-red">ON TOUR</span>
+            {sectionCopy.tours.heading} <span className="text-club-red">{sectionCopy.tours.headingAccent}</span>
           </h2>
           <p className="mt-4 text-xl font-light text-club-gray-light/60">
-            Grab your tickets before they run out. External links point to our ticketing partners.
+            {sectionCopy.tours.subheading}
           </p>
         </motion.div>
 
@@ -77,9 +77,25 @@ export default function Tours() {
         
         {upcomingShows.length === 0 && (
           <div className="text-center py-20 text-club-gray-light/40 italic text-xl">
-            No upcoming shows. Join the Green Room to be first in line when they drop.
+            Nothing scheduled right now. Get on the list and you&apos;ll hear it first.
           </div>
         )}
+
+        {/* YouTube nudge */}
+        <div className="mt-12 pt-6 border-t border-club-blue/10 flex flex-wrap items-center gap-3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-club-red shrink-0">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span className="text-sm text-club-gray-light/50">{sectionCopy.tours.youtubeNudge}</span>
+          <a
+            href="https://www.youtube.com/@AayushWho"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-club-blue hover:text-club-red transition-colors"
+          >
+            Watch on YouTube →
+          </a>
+        </div>
 
       </div>
     </section>
