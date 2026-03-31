@@ -2,11 +2,49 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { heroContent, socialLinks } from "@/data/content";
+
+function SocialIcon({ icon }: { icon: string }) {
+  switch (icon) {
+    case "instagram":
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      );
+    case "youtube":
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      );
+    case "tiktok":
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+        </svg>
+      );
+    case "x":
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.261 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+        </svg>
+      );
+    case "facebook":
+      return (
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[100dvh] flex flex-col justify-end pb-32 md:pb-0 md:justify-center overflow-hidden">
-      {/* Background Image without overlays */}
+    <section className="relative w-full h-dvh flex flex-col justify-center overflow-hidden">
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-image.png"
@@ -17,38 +55,70 @@ export default function Hero() {
         />
       </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full">
+      {/* Hero Content — lower on mobile via mt-36, centered on desktop via justify-center */}
+      <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full mt-100 md:mt-0">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1 className="font-heading text-6xl shadow-club-black drop-shadow-2xl md:text-8xl lg:text-[10rem] leading-none text-white tracking-tight">
-            AAYUSH<br className="hidden md:block"/><span className="text-club-red mix-blend-screen drop-shadow-xl">WHO</span>
+          <h1 className="font-heading text-7xl drop-shadow-2xl md:text-7xl lg:text-9xl leading-none text-white tracking-tight">
+            AAYUSH<br/><span className="text-club-red mix-blend-screen drop-shadow-xl">SHRESTHA</span>
           </h1>
         </motion.div>
 
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-8 md:mt-10 flex flex-wrap gap-4"
+        >
+          <a
+            href={heroContent.primaryCTA.href}
+            className="px-6 py-4 md:px-8 bg-club-red text-white font-heading uppercase tracking-widest text-sm hover:bg-club-blue transition-colors shadow-lg shadow-black/50"
+          >
+            {heroContent.primaryCTA.label}
+          </a>
+          <a
+            href={heroContent.secondaryCTA.href}
+            className="px-6 py-4 md:px-8 border border-club-gray-light/60 text-club-gray-light font-heading uppercase tracking-widest text-sm hover:border-club-red hover:text-club-red transition-colors"
+          >
+            {heroContent.secondaryCTA.label}
+          </a>
+        </motion.div>
+
+        {/* Social Icons */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="mt-6 md:mt-10 max-w-xl"
+          transition={{ duration: 1, delay: 0.9 }}
+          className="mt-8 flex items-center gap-6 md:gap-7"
         >
-          <p className="text-xl md:text-3xl font-light tracking-wide text-club-gray-light leading-snug drop-shadow-md">
-            Raw, unfiltered socio-political commentary <span className="text-club-blue italic font-medium">served with extreme aloofness.</span>
-          </p>
+          <span className="text-xs uppercase tracking-widest text-club-gray-light/40 font-heading hidden sm:block">Follow</span>
+          {socialLinks.map((s) => (
+            <a
+              key={s.platform}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.platform}
+              className="text-club-gray-light/60 hover:text-club-red transition-colors"
+            >
+              <SocialIcon icon={s.icon} />
+            </a>
+          ))}
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-70"
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-60"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       >
         <span className="text-xs uppercase tracking-widest mb-2 font-heading text-club-blue">Scroll</span>
-        <div className="w-[1px] h-12 bg-club-blue"></div>
+        <div className="w-px h-10 bg-club-blue"></div>
       </motion.div>
     </section>
   );
