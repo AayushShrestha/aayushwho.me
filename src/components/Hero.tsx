@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { heroContent, socialLinks } from "@/data/content";
+import ParallaxDepth from "@/components/ParallaxDepth";
 
 function SocialIcon({ icon }: { icon: string }) {
   switch (icon) {
@@ -44,16 +45,32 @@ function SocialIcon({ icon }: { icon: string }) {
 export default function Hero() {
   return (
     <section className="relative w-full h-dvh flex flex-col justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-image.png"
-          alt="Aayush Shrestha Stand Up Comedy"
-          fill
-          className="object-cover object-top"
-          priority
-        />
-      </div>
+      {/* Background — depth-based parallax (WebGL); falls back to static image */}
+      <link rel="preload" as="image" href="/images/hero-image.png" />
+      <ParallaxDepth
+        imageSrc="/images/hero-image.png"
+        depthSrc="/images/hero-depth.png"
+        strength={1.5}
+        easing={0.05}
+        zoom={1}
+        depthBlur={0.1}
+        depthContrast={1}
+        verticalBias={-0.8}
+        centerBias={0.6}
+        scrollStrength={0.3}
+        className="absolute inset-0 z-0 w-full h-full"
+        fallback={
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/hero-image.png"
+              alt="Aayush Shrestha Stand Up Comedy"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+          </div>
+        }
+      />
 
       {/* Hero Content — lower on mobile via mt-36, centered on desktop via justify-center */}
       <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full mt-100 md:mt-0">
