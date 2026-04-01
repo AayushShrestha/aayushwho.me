@@ -181,6 +181,7 @@ function createProgram(
   gl.linkProgram(prog);
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
     console.error("Program link error:", gl.getProgramInfoLog(prog));
+    gl.deleteProgram(prog);
     return null;
   }
   return prog;
@@ -246,13 +247,30 @@ export default function ParallaxDepth({
       canvas.getContext("webgl") ??
       canvas.getContext("experimental-webgl")
     ) as WebGLRenderingContext | null;
-    const isWebGL2 = gl2 !== null;
-    const VERT = isWebGL2 ? VERT_300 : VERT_100;
-    const FRAG = isWebGL2 ? FRAG_300 : FRAG_100;
-
+    
     if (!gl) {
+      console.error("WebGL not supported");
       setGlFailed(true);
       return;
+    }
+
+    // Try WebGL2 shaders first, fallback to WebGL1 if compilation fails
+    let program: WebGLProgram | null = null;
+    
+    if (gl2) {
+      program = createProgram(gl, VERT_300, FRAG_300);
+      if (!program) {
+        console.warn("WebGL2 shaders failed, falling back to WebGL1");
+      }
+    }
+    
+    if (!program) {
+      program = createProgram(gl, VERT_100, FRAG_100);
+      if (!program) {
+        console.error("Both WebGL2 and WebGL1 shader compilation failed");
+        setGlFailed(true);
+        return;
+      }
     }
 
     // Set canvas buffer size synchronously so the first draw is never wrong.
@@ -269,11 +287,6 @@ export default function ParallaxDepth({
     // -----------------------------------------------------------------------
     // 2. Compile shaders + link program
     // -----------------------------------------------------------------------
-    const program = createProgram(gl, VERT, FRAG);
-    if (!program) {
-      setGlFailed(true);
-      return;
-    }
     gl.useProgram(program);
 
     // -----------------------------------------------------------------------

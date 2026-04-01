@@ -73,7 +73,7 @@ export default function Hero() {
       />
 
       {/* Hero Content — lower on mobile via mt-36, centered on desktop via justify-center */}
-      <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full mt-100 md:mt-0">
+      <div className="relative z-10 px-6 md:px-16 max-w-7xl mx-auto w-full mt-[100px] md:mt-0">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
